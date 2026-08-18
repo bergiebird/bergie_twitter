@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
+  # both auto-generate routes for a 'resource'
   resource :session
   resources :passwords, param: :token
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Sign-up: manual routes since RegistrationsController only needs new/create
+  get "signup", to: "registrations#new"
+  post "signup", to: "registrations#create"
+
+  # Generate resources only whats actually needs to be built
+  resources :tweets, only: [ :create, :destroy]
+  resources :users, only: [ :show ]
+
+  # is_alive? 'Heartbeat check' for URL
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # Shortcut for root URL
+  root "tweets#index"
 
-  # Defines the root path route ("/")
-  # root "posts#index"
 end
