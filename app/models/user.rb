@@ -13,6 +13,6 @@ class User < ApplicationRecord
   # validates username presence, uniqueness, length, and format.
   validates :username, presence: true,
                        uniqueness: {case_sensitive: false},
-                      length: {in: 3..20},
-                      format: {with: /\A[a-zA-Z0-9_]+\z/, message: "only letters, numbers, and _"}
+                       length: {in: 3..20},
+                       format: {with: /\A[a-zA-Z0-9_]+\z/, message: "only letters, numbers, and _"}
 end
