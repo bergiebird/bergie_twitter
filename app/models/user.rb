@@ -1,7 +1,8 @@
+
 class User < ApplicationRecord
 
-  # macro that adds password functionality. Available via bcrypt gem.
-  has_secure_password
+  # macro that adds password functionality.
+  has_secure_password # DEPENDS: bcrypt (for hashing)
 
   # one_to_many. Each user has many sessions and tweets.
   has_many :sessions, dependent: :destroy

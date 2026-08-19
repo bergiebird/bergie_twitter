@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   # both auto-generate routes for a 'resource'
   resource :session

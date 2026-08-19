@@ -21,7 +21,7 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  # Everything submitted in the request is sanitized here.
+  # Everything submitted in the request is filtered by key.
   # Only collects the specified fields, anything else gets dropped/ignored.
   private
     def user_params
